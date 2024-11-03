@@ -1,0 +1,33 @@
+# terraform.tfvars.example
+# Rename this file to terraform.tfvars and replace the placeholder values with actual configurations.
+
+# General environment settings
+environment       = "dev"                   # Environment name (e.g., dev, staging, production)
+project_name      = "my_project"            # Unique project identifier, used for naming resources
+
+# VPC and networking
+vpc_cidr          = "10.0.0.0/16"           # CIDR block for the VPC
+availability_zones = ["us-west-2a", "us-west-2b"]  # List of availability zones to deploy resources
+
+# SSH access settings
+allowed_ssh_ips   = ["203.0.113.0/24"]      # List of IP ranges allowed for SSH access to EC2 instances
+
+# Instance configuration
+ami_id            = "ami-0123456789abcdef0" # AMI ID for the EC2 instance
+instance_type     = "t2.micro"              # EC2 instance type (e.g., t2.micro, t3.small)
+root_volume_size  = 8                       # Size of the root EBS volume in GB
+
+# Additional EBS volume configuration
+ebs_volume_size   = 20                      # Size of additional EBS volume in GB (e.g., for application data)
+ebs_volume_type   = "gp2"                   # Type of EBS volume (e.g., gp2 for General Purpose SSD)
+
+# Optional: CloudWatch alarm configuration
+# Note: Replace threshold values as needed for monitoring CPU utilization
+cpu_alarm_threshold = 80                    # CPU utilization threshold for CloudWatch alarm (e.g., 80 for 80%)
+
+# Local tags configuration
+# Define any additional tags you'd like to apply to resources, e.g., for cost allocation or organization
+common_tags = {
+  Project     = "MyProject"                 # Project or cost allocation tag
+  Environment = "Development"               # Tag for the environment (e.g., Development, Staging, Production)
+}
